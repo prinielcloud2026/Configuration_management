@@ -1,0 +1,33 @@
+Add a cluster to Argocd
+========================
+
+1) get the Kubernetes context name 
+
+  kubectl config get-contexts -o name
+2) login to Argocd via cli
+
+ argocd login <server_url:port)
+
+ argocd login 16.59.39.4:30506 --insecure
+username: admin
+password: your password
+
+
+get the kubeconfig file of the cluster want to add. 
+export it and get the context name 
+
+3 Export the kubeconfig file in that active powershell. 
+$env:KUBECONFIG = "$(Get-Location)/../a single cluster.yaml"
+
+or Git bash
+-----------
+export KUBECONFIG=../mysinglecluster.yaml 
+ kubectl config get-contexts -o name
+
+Add the cluster with thit context name 
+--------------------------------------
+example my own k8s cluster context name is SingleNodeCluster2
+
+argocd cluster add SingleNodeCluster2
+
+login to argocd ui and check the cluster you just added. 
