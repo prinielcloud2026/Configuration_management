@@ -1,0 +1,31 @@
+controller:
+  env:
+  - name: AWS_ACCESS_KEY_ID
+    valueFrom:
+      secretKeyRef:
+        name: aws-efs-credentials
+        key: key_id
+  - name: AWS_SECRET_ACCESS_KEY
+    valueFrom:
+      secretKeyRef:
+        name: aws-efs-credentials
+        key: access_key
+  - name: AWS_REGION
+    valueFrom:
+      secretKeyRef:
+        name: aws-efs-credentials
+        key: region
+
+storageClasses:
+- name: efs-dynamic
+  allowVolumeExpansion: true
+  parameters:
+    provisioningMode: efs-ap
+    fileSystemId: fs-0d2c10cff9d201780
+    directoryPerms: "700"
+    gidRangeStart: "1000"
+    gidRangeEnd: "2000"
+    basePath: "/dynamic_provisioning"
+    ensureUniqueDirectory: "true"
+  reclaimPolicy: Delete
+  volumeBindingMode: Immediate
