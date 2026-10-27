@@ -31,7 +31,7 @@ services:
       - acme:/etc/acme.sh
     environment:
       - NGINX_PROXY_CONTAINER=nginx-proxy
-      - DEFAULT_EMAIL=smartobi2022@gmail.com
+      - DEFAULT_EMAIL=prinielcloud22@gmail.com
     restart: unless-stopped
 
   # The main SonarQube Server
@@ -47,10 +47,10 @@ services:
       SONAR_JDBC_PASSWORD: sonar
 
       # These tell nginx-proxy + acme-companion what to expose/sign
-      VIRTUAL_HOST: sast.digitalwitch.online
+      VIRTUAL_HOST: sast.priniel.space
       VIRTUAL_PORT: "9000"
-      LETSENCRYPT_HOST: sast.digitalwitch.online
-      LETSENCRYPT_EMAIL: smartobi2022@gmail.com
+      LETSENCRYPT_HOST: sast.priniel.space
+      LETSENCRYPT_EMAIL: prinielcloud22@gmail.com
     expose:
       - "9000"
     volumes:
